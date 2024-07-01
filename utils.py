@@ -10,12 +10,11 @@ load_dotenv()
 BASE_URL = os.getenv("BASE_URL")
 
 COMMON_HEADERS = {
-    "Content-Type": "application/x-www-form-urlencoded",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-    # "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
-    # "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0",
-    "Referer": "https://suno.com/",
-    "Origin": "https://suno.com",
+    'Content-Type': 'text/plain;charset=UTF-8',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/123.0.0.0 Safari/537.36',
+    "Referer": "https://app.suno.ai/",
+    "Origin": "https://app.suno.ai",
 }
 
 
