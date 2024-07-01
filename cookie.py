@@ -39,6 +39,14 @@ suno_auth = SunoCookie()
 suno_auth.set_session_id(os.getenv("SESSION_ID"))
 suno_auth.load_cookie(os.getenv("COOKIE"))
 
+from fake_useragent import UserAgent
+ua = UserAgent(browsers=["edge"])
+self.token_headers = {
+		"User-Agent": ua.edge,
+		"Impersonate": browser_version,
+		# "Accept-Encoding": "gzip, deflate, br",
+}
+browser_version = "edge101"
 
 def update_token(suno_cookie: SunoCookie):
     headers = {"cookie": suno_cookie.get_cookie()}
@@ -46,8 +54,8 @@ def update_token(suno_cookie: SunoCookie):
     session_id = suno_cookie.get_session_id()
 
     resp = requests.post(
-        url=f"https://clerk.suno.com/v1/client/sessions/{session_id}/tokens?_clerk_js_version=4.73.3",
-        headers=headers,
+        url=f"https://clerk.suno.com/v1/client/sessions/{session_id}/tokens?_clerk_js_version=4.73.2",
+        headers=self.token_headers,
     )
 
     resp_headers = dict(resp.headers)
