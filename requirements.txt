@@ -4,4 +4,3 @@ fastapi
 uvicorn
 pydantic
 requests
-fake-useragent
