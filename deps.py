@@ -11,6 +11,7 @@ class AccountManager:
     async def get_token(self):
         while True:
             token = self.current_auth.get_token()
+'''
             try:
                 credits_info = await get_credits(token)
                 credits = credits_info.get('credits', 0)
@@ -27,6 +28,7 @@ class AccountManager:
                     self.current_auth = next(self.auth_generator)
                 except StopIteration:
                     raise Exception("所有账号积分已用尽或出现错误")
+'''
 
 account_manager = AccountManager()
 
