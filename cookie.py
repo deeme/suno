@@ -3,7 +3,7 @@
 import os
 import time
 from http.cookies import SimpleCookie
-from threading import Thread
+from threading import Thread, Lock
 from datetime import datetime, date #时间
 
 import requests
