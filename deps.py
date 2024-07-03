@@ -4,7 +4,7 @@ from utils import get_credits
 import logging
 import asyncio
 
-async def get_token():
+def get_token():
     while True:
         for suno_auth in suno_auths.values():
             token = suno_auth.get_token()

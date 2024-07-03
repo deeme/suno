@@ -84,8 +84,3 @@ def start_keep_alive(suno_auths):
 
 suno_auths = load_env_cookies()
 start_keep_alive(suno_auths)
-
-def get_next_available_auth():
-    global suno_auths
-    for auth in suno_auths.values():
-        yield auth
