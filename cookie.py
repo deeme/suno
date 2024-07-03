@@ -34,8 +34,8 @@ class SunoCookie:
     def set_token(self, token: str):
         self.token = token
 
-def load_accounts():
-    accounts = {}
+def load_env_cookies():
+    suno_auths = {}
     i = 1
     while True:
         session_id = os.getenv(f"SESSION_ID{i}")
@@ -45,9 +45,9 @@ def load_accounts():
         suno_auth = SunoCookie()
         suno_auth.set_session_id(session_id)
         suno_auth.load_cookie(cookie)
-        accounts[i] = suno_auth
+        suno_auths[i] = suno_auth
         i += 1
-    return accounts
+    return suno_auths
 
 def update_token(suno_cookie: SunoCookie):
     headers = {"cookie": suno_cookie.get_cookie()}
@@ -77,8 +77,15 @@ def keep_alive(suno_cookie: SunoCookie):
         finally:
             time.sleep(5)
 
-# 加载账号并启动保活
-accounts = load_accounts()
-for account in accounts.values():
-    t = Thread(target=keep_alive, args=(account,))
-    t.start()
+def start_keep_alive(suno_auths):
+    for suno_auth in suno_auths.values():
+        t = Thread(target=keep_alive, args=(suno_auth,))
+        t.start()
+
+suno_auths = load_env_cookies()
+start_keep_alive(suno_auths)
+
+def get_next_available_auth():
+    global suno_auths
+    for auth in suno_auths.values():
+        yield auth
