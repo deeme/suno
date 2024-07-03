@@ -5,13 +5,6 @@ import logging
 import asyncio
 
 async def get_token():
-'''
-    token = suno_auths[1].get_token()
-    try:
-        yield token
-    finally:
-        pass
-'''
     while True:
         for suno_auth in suno_auths.values():
             token = suno_auth.get_token()
